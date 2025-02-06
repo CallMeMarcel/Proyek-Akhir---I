@@ -2,7 +2,7 @@
 
 @section('all')
 
-<section class="ftco-intro img" id="events-section" style="background-image: url(asset/images/cause-3.jpg);">
+<section class="ftco-intro img" id="events-section" style="background-image: url(asset/images/bg_3.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row">
@@ -11,6 +11,7 @@
 
 			
 		</section>
+
         <section class="ftco-section bg-light ftco-event" id="events-section">
 			<div class="container-fluid px-4 ftco-to-top">
 				<div class="row justify-content-center pb-5">
@@ -19,26 +20,32 @@
             <h2 class="mb-5">Warta Jemaat</h2>
           </div>
         </div>
-
-
     <div class="container">
-        
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="bg-light">
+                        <th>No</th>
+                        <th>File</th>
+                        <th>Tanggal</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <?php $i=1 ?>
-                    @foreach($allWarta as $warta)
-                    <div class="card mb-5" style="color:black;">
-                        <h4 class="card-header" style="background-color: #FFD700;"><?= $i ?>. {{ $warta->judul }}</h4>
-                    <div class="card-body">
-                    <h5 class="card-title">{{ $warta->deskripsi }}</h5>
-                        <p class="card-text" style="color: #FFD700;">{{$warta->formattedCreatedAt}}</p>
-                    </div>    
-                    </div>
                     
+                    @foreach($allWarta as $warta)
+                    <tr>
+                        <td scope="item"><?= $i ?></td>
+                        <td> <a href="{{ asset('asset/file/' . $warta->file) }}" target="_blank">{{ $warta->file }}</a></td>
+                        <td>{{ $warta->tanggal }}</td>
+                            
+                    </tr>
                     <?php $i++ ?>
                     @endforeach
+                   
                 </tbody>
             </table>
         </div>
     </div>
-
 </section>
 @endsection

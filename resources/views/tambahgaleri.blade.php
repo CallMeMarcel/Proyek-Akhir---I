@@ -2,7 +2,7 @@
 
 @section('tambah')
 <div class="container">
-  <h2 class="mb-4">Tambah Data Galeri</h2>
+  <h2 class="mb-4">Tambah Galeri</h2>
   <form action="/admin/tambahgaleri" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">

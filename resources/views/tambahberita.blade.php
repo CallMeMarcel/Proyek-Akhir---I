@@ -26,6 +26,10 @@
       <label for="tanggal" class="form-label">Tanggal</label>
       <input type="date" class="form-control" id="tanggal" name="tanggal" required>
     </div>
+    <div class="mb-3">
+      <label for="link" class="form-label">Link</label>
+      <input type="url" class="form-control" id="link" name="link" required>
+    </div>
     <button type="submit" class="btn btn-warning">Submit</button>
   </form>
 </div>

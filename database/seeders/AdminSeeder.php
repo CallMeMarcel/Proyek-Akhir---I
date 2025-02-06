@@ -16,7 +16,7 @@
         public function run()
         {
             DB::table('admins')->insert([
-                'email' => 'pedro@gmail.com',
+                'username' => 'pedrohtgl',
                 'password' => bcrypt('pedro123'),
             ]);
         }

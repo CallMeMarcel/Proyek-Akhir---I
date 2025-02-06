@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('wartas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('judul');
-            $table->string('deskripsi');
+            $table->string('file');
+            $table->date('tanggal');
+            
             
             
         });

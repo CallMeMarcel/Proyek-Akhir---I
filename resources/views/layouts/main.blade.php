@@ -24,36 +24,42 @@
     <link rel="stylesheet" href="{{URL::asset('asset/css/icomoon.css')}}">
     <link rel="stylesheet" href="{{URL::asset('asset/css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .navbar-nav h5 li {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
   </head>
   <body>
     
 
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-dark site-navbar-target bg-dark" id="ftco-navbar" style="opacity:80%">
+  <header>
+  <nav class="navbar navbar-expand-lg  ftco_navbar site-navbar-target" style="background-color:black; opacity: 80%;" id="ftco-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/"><img src="{{URL::asset('asset/images/favicon.ico')}}" class="start-100" alt="Akun" style="width: 60px; height: auto;"></span> Gkpi Sidikalang</a>
+    <a class="navbar-brand" href="/"><i class="fa-solid fa-church" class="start-100" alt="Akun" style="width: 60px; height: auto; color:white;"></i> Gkpi Sidikalang</a>
     <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="oi oi-menu"></span> Menu
     </button>
 
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a href="/" class="nav-link"><span>Home</span></a></li>
-        <li class="nav-item"><a href="about" class="nav-link"><span>About</span></a></li>
+        <h5><li class="nav-item"><a href="/" class="nav-link"><span>Home</span></a></li></h5>
+        <h5><li class="nav-item"><a href="about" class="nav-link"><span>About</span></a></li></h5>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Data</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="datajemaats"> Data Jemaat</a></li>
+        <h5><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Data</a></h5>
+            <ul class="dropdown-menu">  
               <li><a class="dropdown-item" href="wartajemaat">Warta Jemaat</a></li>
-              <li><a class="dropdown-item" href="pelayanibadah">Pelayan Ibadah</a></li>
-              <li><a class="dropdown-item" href="keuangan">Keuangan</a></li>
+              
             </ul>
         </li>
         
-        <li class="nav-item"><a href="events" class="nav-link"><span>Events</span></a></li>
-        <li class="nav-item"><a href="leaders" class="nav-link"><span>Pengurus</span></a></li>
-        <li class="nav-item"><a href="contact" class="nav-link"><span>Contact</span></a></li>
-        <li><a href="/admin/login" class="nav-link ml-5 "><img src="{{URL::asset('asset/images/akun.png')}}" class="start-100" alt="Akun" style="width: 30px; height: auto;"></a></li>
+        <h5><li class="nav-item"><a href="events" class="nav-link"><span>Events</span></a></li></h5>
+        <h5> <li class="nav-item"><a href="leaders" class="nav-link"><span>Pengurus</span></a></li></h5>
+        <h5> <li class="nav-item"><a href="contact" class="nav-link"><span>Contact</span></a></li></h5>
+        <h5> <li><a href="/admin/login" class="nav-link ml-5 "><i class="fa-solid fa-user-tie" style="color:white;"></i></a></li>
       </ul>
     </div>
   </div>
@@ -63,55 +69,33 @@
 
 	@yield('all')
 
-	<footer class="ftco-footer ftco-bg-dark ftco-section bg-dark">
+	<footer class="ftco-footer ftco-bg-dark ftco-section" style="background-color:black;">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2 logo"><img src="{{URL::asset('asset/images/favicon.ico')}}" class="start-100" alt="Akun" style="width: 60px; height: auto;"><span>Gkpi </span> Sidikalang</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
+              <h2 class="ftco-heading-2 logo"><i class="fa-solid fa-church" class="start-100" alt="Akun" style="width: 60px; height: auto; color:white;"></i><span>Gkpi </span> Sidikalang</h2>
+              <p>Whatever we may be walking into, God has already stepped into it and prepared a way for us.
+</p>
             </div>
           </div>
           <div class="col-md">
              <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">About</h2>
               <ul class="list-unstyled">
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Staff</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Beliefs</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>History</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Mission</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Wedding &amp; Funerals</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Jobs &amp; Internship</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Fellowships</a></li>
-
+                <li><a href="leaders" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Pengurus</a></li>
+                <li><a href="events" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Events</a></li>
+                <li><a href="about" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>History</a></li>
               </ul>
             </div> 
           </div>
-          <div class="col-md">
-             <div class="ftco-footer-widget mb-4 ml-md-5">
-              <h2 class="ftco-heading-2">Connect</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Home Groups</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Recovery Groups</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Memberships</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Children &amp; Students</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Volunteer</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Counseling</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Assistance</a></li>
-              </ul>
-            </div> 
-          </div>
+          
           <div class="col-md">
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Service Hours</h2>
               <div class="opening-hours">
-              	<p>Saturday Prayer Meeting: <span class="mb-3">10:00 am to 11:30 am</span></p> 
-              	<p>Sunday Service: <span class="mb-3">10:30 am to 11:30 am</span></p>
+              	<p>Ibadah Pagi: <span class="mb-3">08:30 am to 10:00 am</span></p> 
+              	<p>Ibadah Siang: <span class="mb-3">10:30 am to 12:30 am</span></p>
               </div>
             </div>
           </div>
@@ -120,7 +104,7 @@
           <div class="col-md-12 text-center">
 
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i><a> by Kelompok 13</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This Website is made with <i class="fa-regular fa-heart"></i><a> by GKPI Sidikalang Kota</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>
@@ -149,6 +133,8 @@
   <script src="{{URL::asset('asset/js/google-map.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="{{URL::asset('asset/js/main.js')}}"></script>
+  <script src="https://smtpjs.com/v3/smpt.js"></script>
+  @stack("js")
 
   </body>
 </html>

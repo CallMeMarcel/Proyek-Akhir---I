@@ -7,6 +7,10 @@
     <form action="/admin/tambahpelayan" method="POST">
       @csrf
       <div class="mb-3">
+        <label for="tanggal"class="form-label">Tanggal :</label>
+        <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+    </div>
+      <div class="mb-3">
         <label for="pengkhotbah" class="form-label">Pengkhotbah:</label>
         <input type="text" class="form-control" id="pengkhotbah" name="khotbah" required>
       </div>
@@ -38,7 +42,7 @@
         <label for="doa_syafaat" class="form-label">Doa Syafaat:</label>
         <input type="text" class="form-control" id="doa" name="doa" required>
       </div>
-      <button type="submit" class="btn btn-warning"><i class="fa-solid fa-plus"></i></button>
+      <button type="submit" class="btn btn-warning"><i class="fa-solid fa-plus"></i> Tambah</button>
     </form>
   </div>
 @endsection

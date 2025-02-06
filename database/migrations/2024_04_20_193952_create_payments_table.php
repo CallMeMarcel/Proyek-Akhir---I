@@ -16,10 +16,8 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->enum('persembahan', array('weekly', 'daily'));
-            $table->float('nominal');
+            $table->string('file');
             $table->date('tanggal');
-            $table->enum('status' , array('accepted','not accepted'));
         });
     }
 

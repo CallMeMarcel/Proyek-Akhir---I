@@ -3,26 +3,16 @@
 @section('tambah')
 
 <div class="container">
-    <a href="{{ url('/admin/payment') }}" class="btn btn-warning m-2">Kembali ke Keuangan</a>
+    <a href="{{ url('/admin/payment') }}" class="btn btn-warning m-2">Kembali ke Jadwal</a>
     <div class="row m-1">
         <div class="col">
             <form action="{{ url('admin/updatepayment/'.$payment->id) }}" method="post">
                 @csrf
                 <div class="form-group">
-                    <label for="persembahan">Kategori :</label>
-                    <select class="form-select" name="persembahan" type="text" class="form-control @error('persembahan') is-invalid @enderror" id="persembahan"  value="{{ $payment->persembahan }}">
-                    
-                    <option value="weekly">Weekly</option>
-                    <option value="daily">Daily</option>
-                </select>
-                    @error('persembahan')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="nominal">Nominal :</label>
-                    <input name="nominal" type="number" class="form-control @error('nominal') is-invalid @enderror" id="nominal" value="{{ $payment->nominal }}">
-                    @error('nominal')
+                    <label for="file">file :</label>
+                    <input  name="file" type="file" id="file"  value="{{ $payment->file }}">
+                   
+                    @error('file')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -33,18 +23,8 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="form-group">
-                    <label for="status">Status</label>
-                    <select class="form-select" name="status" class="form-control @error('status') is-invalid @enderror" id="status" rows="3" placeholder="...">{{ $payment->status }}
-                     
-                    <option value="accepted">Accepted</option>
-                    <option value="not accepted">Not Accepted</option>
-                </select>
-                    @error('status')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-                <button class="btn btn-dark" type="submit">Update Keuangan</button>
+                
+                <button class="btn btn-dark" type="submit">Update Jadwal</button>
             </form>
         </div>
     </div>

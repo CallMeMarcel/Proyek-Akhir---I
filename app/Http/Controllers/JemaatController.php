@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jemaat;
+use App\Models\Payment;
+use App\Models\Pengurus;
+use App\Models\Keluarga;
+use App\Models\Galeri;
 use Illuminate\Http\Request;
 
 
@@ -15,7 +19,7 @@ class JemaatController extends Controller
      */
     public function index()
     {
-        $allJemaat = Jemaat::all();
+        $allJemaat = Jemaat::paginate(10);  
     
         return view('datajemaat', compact('allJemaat'));
     }
@@ -25,7 +29,7 @@ class JemaatController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function create()
     {
         return view('tambahjemaat');
@@ -39,20 +43,42 @@ class JemaatController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required|max:8000',
-            'umur' => 'required',
-            'jenisKelamin' => 'required',
+        $validate=[
+            'namakeluarga' => 'required',
+            'namaayah' => 'required',
+            'namaibu' => 'required',
+            'sektor' => 'required',
             'alamat' => 'required',
-        ]);
+            'namaanak' => 'required',
+            ];
 
-        $newJemaat = new Jemaat;
-        $newJemaat->nama = $request->nama;
-        $newJemaat->umur = $request->umur;
-        $newJemaat->jenisKelamin = $request->jenisKelamin;
-        $newJemaat->alamat = $request->alamat;
+        $message =[
+            'namakeluarga.requried' =>'Nama Harus Diisi',
+            'namaayah.requried' =>'Nama Harus Diisi',
+            'namaibu.requried' =>'Nama Harus Diisi',
+            'sektor.required' => 'Sektor Harus Diisi',
+            'alamat.required' => 'Alamat Harus Diisi',
+            'namaanak.*required' => 'Nama Anak Harus Diisi',
+        ];
 
-        $newJemaat->save();
+        $this -> validate($request, $validate, $message);
+
+        $newDatajemaat = new jemaat;
+        $newDatajemaat->namakeluarga = $request->namakeluarga;
+        $newDatajemaat->sektor = $request->sektor;
+        $newDatajemaat->alamat = $request->alamat; 
+        $newDatajemaat->save();
+
+        $numAnak = count($request->namaanak);
+
+        for($i = 0; $i < $numAnak; $i++) {
+            $newDatakeluarga = new keluarga;
+            $newDatakeluarga->datajemaat_id = $newDatajemaat->id;
+            $newDatakeluarga->namaayah = $request->namaayah;
+            $newDatakeluarga->namaibu = $request->namaibu;
+            $newDatakeluarga->namaanak = $request->namaanak[$i];
+            $newDatakeluarga->save();
+        }
         return redirect("/admin/datajemaat")->with('status', 'Jemaat Berhasil ditambahkan');
     }
 
@@ -62,9 +88,11 @@ class JemaatController extends Controller
      * @param  \App\Models\Jemaat  $jemaat
      * @return \Illuminate\Http\Response
      */
-    public function show(Jemaat $jemaat)
+    public function show($id)
     {
-        //
+        $keluarga = keluarga::where('id', $id)->get();
+        $jemaat = jemaat::find($id);
+        return view('/admin/viewjemaat', compact('keluarga', 'jemaat'));
     }
 
     /**
@@ -89,18 +117,19 @@ class JemaatController extends Controller
     public function update(Request $request,$jemaatID)
     {
         $request->validate([
-            'nama' => 'required | max:8000',
-            'umur' => 'required',
-            'jenisKelamin' => 'required',
+            'namakeluarga' => 'required',
+            'namaanak' => 'required',
             'alamat' => 'required',
-            ]);
+            'sektor' => 'required',
 
-            Jemaat::where('id', $jemaatID)
+        ]);
+
+        Datajemaat::where('id', $jemaatID)
             ->update([
-            'nama' => $request->nama,
-            'umur' => $request->umur,
-            'jenisKelamin' => $request->jenisKelamin,
-            'alamat' => $request->alamat,
+                'namakeluarga'=>$request->namakeluarga,
+                'namaanak'=>$request->namaanak,
+                'alamat'=>$request->alamat,
+                'sektor'=>$request->sektor,                
             ]);
             return redirect("/admin/datajemaat")->with('status', 'Jemaat dengan id ' .$jemaatID. ' berhasil di ubah');
     }
@@ -111,12 +140,57 @@ class JemaatController extends Controller
      * @param  \App\Models\Jemaat  $jemaat
      * @return \Illuminate\Http\Response
      */
-    public function destroy($jemaatNama)
+    public function destroy($id)
     {
-        Jemaat::where('nama', $jemaatNama)->delete();
+        Jemaat::where('id', $id)->delete();
 
-        return redirect("/admin/datajemaat")->with('status', 'Jemaat yang bernama '.$jemaatNama.' Berhasil Dihapus!');
+        return redirect("/admin/datajemaat")->with('status', 'Jemaat dengan Id '.$id.' Berhasil Dihapus!');
     }
+
+    // Di dalam model Jemaat.php
+    
+    
+    
+        public function Pedro()
+        {
+            $allJemaat = Jemaat::all();
+            $allPengurus = Pengurus::all();
+            $allPayment = Payment::all();
+            $latestGaleri = Galeri::latest()->take(6)->get();
+
+        
+            if ($latestGaleri->count() > 4) {
+                $oldestGaleri = Galeri::oldest()->first();
+                $oldestGaleri->delete();
+            }
+    
+            
+            $allGaleri = Galeri::latest()->take(4)->get();
+        
+            
+        
+            return view('about', compact('allJemaat', 'allPengurus', 'allPayment' , 'allGaleri'));
+        }
+        
+        public function other()
+        {
+            
+            $latestGaleri = Galeri::latest()->take(6)->get();
+    
+            
+            if ($latestGaleri->count() > 4) {
+                $oldestGaleri = Galeri::oldest()->first();
+                $oldestGaleri->delete();
+            }
+    
+            
+            $allGaleri = Galeri::latest()->take(4)->get();
+        
+            return view('/about', compact('allGaleri'));
+        }
+        
+    
+
 }
 
 

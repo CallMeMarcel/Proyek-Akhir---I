@@ -25,13 +25,11 @@
         opacity: 1;
     }
 }
-
-
-        .container {
-            max-width: 450px;
-            margin-top: 100px;
-            border-radius:1em;
-        }
+  .container {
+      max-width: 450px;
+      margin-top: 100px;
+      border-radius:1em;
+  }
   /* Animasi fade in */
   .fade-in {
     opacity: 0;

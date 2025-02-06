@@ -18,17 +18,17 @@ class AdminController extends Controller
         if($request->isMethod('post')){
             $data = $request->all();
             $required = [
-                'email' => 'required',
+                'username' => 'required',
                 'password' => 'required|min:6',
             ];
             $message = [
-                'email.required' => 'Email harus diisi',
+                'username.required' => 'Username harus diisi',
                 'password.required' => 'Password harus diisi',
                 'password.min' => 'Password minimal 6 karakter',
             ];
             $this->validate($request, $required, $message);
             
-            if(Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password']]))
+            if(Auth::guard('admin')->attempt(['username' => $data['username'], 'password' => $data['password']]))
             {
                 return redirect('admin/dashboard')->with('success_message', 'Login Berhasil!');
             }
@@ -45,35 +45,34 @@ class AdminController extends Controller
         return redirect('/admin/login');
     }
 
-    public function register(Request $request){
-        if($request->isMethod('post')){
-            $data = $request->input();
-            $required = [
-                'nama' => 'required|regex:/^[\pL\s\-]+$/u',
-                'username' => 'required|max:20|unique:admins',
-                'password' => 'required|min:8',
-            ];
 
-            $message = [
-                'nama.required' => 'Nama tidak boleh kosong',
-                'nama.regex' => 'Nama tidak boleh menggunakan simbol',
-                'username.required' => 'Username tidak boleh kosong',
-                'username.max' => 'Username tidak boleh melebihi 20 karakter',
-                'username.unique' => 'Username sudah terdaftar',
-                'password.required' => 'Password tidak boleh kosong',
-                'password.min' => 'Password harus lebih dari 8 karakter',
-            ];
+   
+    
+     public function register(Request $request){
+         if($request->isMethod('post')){
+             $data = $request->input();
+             $required = [
+                 'username' => 'required|max:20|unique:admins',
+                 'password' => 'required|min:8',
+             ];
 
-            $this->validate($request, $required, $message);
-            Admin::insert([
-                'nama' => $request->input('nama'),
-                'username' => $request->input('username'),
-                'password' => Hash::make($request->input('password')),
-            ]);
-            return redirect('/admin/login')->with('success_message', 'Admin berhasil didaftarkan ');
-        }
-        return view('register');
-    }
+             $message = [
+                 'username.required' => 'Username tidak boleh kosong',
+                 'username.max' => 'Username tidak boleh melebihi 20 karakter',
+                 'username.unique' => 'Username sudah terdaftar',
+                 'password.required' => 'Password tidak boleh kosong',
+                 'password.min' => 'Password harus lebih dari 8 karakter',
+             ];
+
+             $this->validate($request, $required, $message);
+             Admin::insert([
+                 'username' => $request->input('username'),
+                 'password' => Hash::make($request->input('password')),
+             ]);
+             return redirect('admin/dashboard')->with('success_message', 'Admin berhasil didaftarkan ');
+         }
+         return view('register');
+     }
 
     public function Dashboard() {
         return view('dashboard');

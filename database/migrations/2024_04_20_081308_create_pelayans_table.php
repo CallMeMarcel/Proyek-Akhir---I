@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('pelayans', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('tanggal');
             $table->string('khotbah');
             $table->string('liturgis');
             $table->string('warta');

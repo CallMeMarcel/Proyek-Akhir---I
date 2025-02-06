@@ -3506,6 +3506,7 @@ header{
   align-items: center; }
 
 .navbar-toggler {
+  color: white;
   padding: 0.25rem 0.75rem;
   font-size: 1.25rem;
   line-height: 1;
@@ -9507,7 +9508,7 @@ textarea.form-control {
   border-radius: 50%; }
   .ftco-counter .icon span {
     font-weight: normal;
-    color: #fbcf00;
+    color: black;
     font-size: 48px; }
 
 .ftco-counter .counter-wrap {

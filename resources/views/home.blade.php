@@ -3,7 +3,7 @@
 @section('all')
 
 <section class="home-slider js-fullheight owl-carousel">
-      <div class="slider-item js-fullheight" style="background-image:url(asset/images/bg_1.jpg);">
+      <div class="slider-item js-fullheight" style="background-image:url(asset/images/GKPI.jpg);">
       	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -21,7 +21,7 @@
         </div>
       </div> 
 
-      <div class="slider-item js-fullheight" style="background-image:url(asset/images/bg_2.jpg);">
+      <div class="slider-item js-fullheight" style="background-image:url(asset/images/GKPII.jpg);">
       	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -30,9 +30,9 @@
 	          		<div class="subheading">
 	          			<span>GKPI Sidikalang Kota</span>
 	          		</div>
-		            <h1 class="mb-4">Kamu Tau Gak?<span>PEDRO ITU BAIK BANGETT LOCH</span></h1>
+		            <h1 class="mb-4">Following <span>Jesus</span> wherever we are</h1>
 		            <p>Following Jesus wherever we are.</p>
-		            <p><a href="#" class="btn btn-primary py-2 px-4">Be part of us</a> <a href="about" class="btn btn-primary btn-outline-primary py-2 px-4 home-slider">About us</a></p>
+		            <p><a href="#" class="btn btn-primary py-2 px-4">Be part of us</a><a href="about" class="btn btn-primary btn-outline-primary py-2 px-4 home-slider">About us</a></p>
 	            </div>
 	          </div>
 	        </div>
@@ -44,12 +44,12 @@
     Featured
   </div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title">Special News</h5>
+    <p class="card-text">GKPI Sidikalang kota</p>
+    <a href="events" class="btn btn-primary">Go somewhere</a>
   </div>
   <div class="card-footer text-body-secondary">
-    2 days ago
+    News
   </div>
 </div>
 
@@ -67,7 +67,7 @@
                         <p><span class="icon-location"></span> {{ $berita->deskripsi }}</p>
                     </div>
                 </div>
-                <div class="mt-auto"><a href="#" class="btn btn-primary">Join Us</a></div>
+                <div class="mt-auto"><a href="{{ $berita->link }}" class="btn btn-primary">Visit Now!</a></div>
             </div>
         </div>
     </div>

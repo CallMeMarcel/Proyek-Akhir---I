@@ -96,7 +96,7 @@
 						<div class="text-inner pl-md-5">
               <h3 class="heading">Welcome to <span>Hill City Reformed </span>Baptist Church</h3>
               <p>Lorem ipsum dolor si, <strong>quis </strong> behind the word mountains, far from the countries Vokalia and Consonantia, there live the <strong>nostrud</strong> rcitation ullamco laboris nisi ut. Lorem ipsum dolor sit amet, consectetur adipiscing </p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+              <p>Lorem ipsum 	dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
               <ul class="my-4">
               	<li><span class="ion-ios-checkmark-circle mr-2"></span> Exercitation ullamco laboris</li>
               	<li><span class="ion-ios-checkmark-circle mr-2"></span> Lorem ipsum dolor sit</li>

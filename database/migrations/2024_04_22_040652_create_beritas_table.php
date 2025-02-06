@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('gambar');
             $table->string('aktor');
             $table->date('tanggal');
+            $table->string('link');
         });
     }
 

@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('all')
+
+
 <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
       <div class="container">
       	<div class="row justify-content-center mb-5 pb-3">
@@ -14,9 +16,35 @@
 		
         <div class="row block-9">
           <div class="col-md-7 order-md-last d-flex">
-            <form action="#" class="bg-light p-4 p-md-5 contact-form">
+		  
+		  <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item mt-5">
+					<span class="icon-twitter"> Twitter</span><br>
+                        <a href="https://twitter.com/" target="_blank">https://twitter.com/</a>
+                    </li>
+                    <li class="list-group-item mt-5">
+					<span class="icon-facebook"> Facebook</span><br>		
+                        <a href="https://web.facebook.com/gkpijksidikalangkota" target="_blank">https://web.facebook.com/gkpijksidikalangkota</a>
+
+                    </li>
+                    <li class="list-group-item mt-5">
+					<span class="icon-instagram"> Instagram</span> <br>
+                        <a href="https://www.instagram.com/" target="_blank">https://www.instagram.com/</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+          </div>
+		  <!-- <div class="row block-9">
+          <div class="col-md-7 order-md-last d-flex">
+		  
+             <form action="#" class="bg-light p-4 p-md-5 contact-form">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name">
+			  <a href="#"><span class="icon-twitter"></span></a>
               </div>
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Your Email">
@@ -30,10 +58,28 @@
               <div class="form-group">
                 <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
               </div>
-            </form>
+            </form>  
 
-          </div>
+          </div> -->
 
+		  <div class="col-md-5 d-flex">
+          	<div class="row d-flex contact-info mb-5">
+		          <div class="col-md-12 ftco-animate">
+		          	<div class="box p-2 px-3 bg-light d-flex">
+		          	
+		          		<div>
+		 
+			  </div>
+			          </div>
+		          </div>
+		          <div class="col-md-12 ftco-animate">
+		          	<div class="box p-2 px-3 bg-light d-flex">
+		          		<div class="icon mr-3">
+		          			
+		          		</div>
+
+
+					
           <div class="col-md-5 d-flex">
           	<div class="row d-flex contact-info mb-5">
 		          <div class="col-md-12 ftco-animate">
@@ -43,7 +89,7 @@
 		          		</div>
 		          		<div>
 			          		<h3 class="mb-3">Address</h3>
-				            <p>198 West 21th Street, Suite 721 New York NY 10016</p>
+				            <p>Jl. Sakti No.1, Kota Sidikalang, Kec. Sidikalang, Kabupaten Dairi, Sumatera Utara 22219</p>
 			            </div>
 			          </div>
 		          </div>
@@ -131,5 +177,11 @@
 			 </div>
 			</div>
     		</section>
+
+			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 
     @endsection

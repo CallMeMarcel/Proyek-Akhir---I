@@ -89,7 +89,7 @@ class GaleriController extends Controller
      */
     public function update(Request $request,$galeriId)
     {
-        $request->validated([
+        $request->validate([
             'deskripsi' => 'required',
         ]);
 
@@ -107,10 +107,10 @@ class GaleriController extends Controller
      * @param  \App\Models\Galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function destroy($galeriId)
+    public function destroy($id)
     {
-        Galeri::where('id', $galeriId)->delete();
+        Galeri::where('id', $id)->delete();
 
-        return redirect("/admin/galeri")->with('status', 'Galeri yang ber id '.$galeriId.' Berhasil Dihapus!');
+        return redirect("/admin/galeri")->with('status', 'Galeri yang ber id '.$id.' Berhasil Dihapus!');
     }
 }

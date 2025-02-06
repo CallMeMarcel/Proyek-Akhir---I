@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('jemaats', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nama');
-            $table->integer('umur');
-            $table->enum('jenisKelamin', array('laki-laki','perempuan'));
+            $table->string('namakeluarga');
+            $table->string('sektor');
             $table->string('alamat');
+
+            
         });
     }
 

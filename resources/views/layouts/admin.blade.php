@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="{{URL::asset('asset/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <!-- JQVMap -->
   <link rel="stylesheet" href="{{URL::asset('asset/plugins/jqvmap/jqvmap.min.css')}}">
+
+  
   <!-- Theme style -->
   <link rel="stylesheet" href="{{URL::asset('asset/dist/css/adminlte.min.css')}}">
   <!-- overlayScrollbars -->
@@ -30,6 +32,8 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     .fade-in {
       animation: fadeInAnimation ease 1s;
@@ -46,7 +50,95 @@
       }
 
     }
-    
+
+    .nav-link:hover {
+    background-color: #ffbf00!important;
+}
+
+.nav-link:hover .fa-solid {
+    color: #fff !important; /*Warna ikon putih saat digulirkan */
+}
+
+.nav-link:hover .fa-regular{
+  color: #fff !important;
+}
+/* Efek hover untuk input */
+.input-group input[type="search"]:hover {
+    border-color: #ffc107; /* Warna border saat digulirkan */
+}
+
+/* Efek hover untuk tombol pencarian */
+.input-group button.btn-sidebar:hover {
+    background-color: #ffbf00; /* Warna latar belakang saat digulirkan */
+    border-color: #ffc107; /* Warna border saat digulirkan */
+    color: #fff; /* Warna teks putih saat digulirkan */
+}
+footer {
+  background: linear-gradient(to right, #ffbf00,#ff5151 ); /* Gradient dari kuning ke hijau */
+}
+
+nav.main-header{
+  background: linear-gradient(to right, #ff5151, #ffbf00);
+}
+
+.modal-confirm {
+    color: #636363;
+    width: 400px;
+}
+.modal-confirm .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+}
+.modal-confirm .modal-header {
+    border-bottom: none;
+    position: relative;
+}
+.modal-confirm h4 {
+    text-align: center;
+    font-size: 26px;
+    margin: 30px 0 -10px;
+}
+.modal-confirm .icon-box {
+    color: #fff;
+    width: 95px;
+    height: 95px;
+    display: inline-block;
+    border-radius: 50%;
+    z-index: 9;
+    border: 5px solid #f15e5e;
+    padding: 15px;
+    text-align: center;
+}
+.modal-confirm .icon-box i {
+    font-size: 58px;
+    margin: -2px 0 0 -2px;
+}
+.modal-confirm .modal-dialog {
+    margin-top: 80px;
+}
+.modal-confirm .btn {
+    color: #fff;
+    border-radius: 4px;
+    background: #60c7c1;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    border: none;
+}
+.modal-confirm .btn-danger {
+    background: #f15e5e;
+}
+.modal-confirm .btn-secondary {
+    background: #c1c1c1;
+}
+.modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
+    background: #a8a8a8;
+}
+
+ 
   </style>
 </head>
 
@@ -55,20 +147,19 @@
 <div class="wrapper fade-in">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-warning navbar-light fade-in">
+  <nav class="main-header navbar navbar-expand navbar-light fade-in">
     <!-- Left navbar links -->
     <ul class="navbar-nav fade-in">
       <li class="nav-item fade-in">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item fade-in d-none d-sm-inline-block">
+      <li class="nav-item fade-in  d-sm-inline-block">
         <a href="/admin/dashboard" class="nav-link"><i class="fa-solid fa-gauge" style="font-size:20px"></i> Dashboard</a>
       </li>
-      <li class="nav-item fade-in d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+      <li class="nav-item fade-in ">
+        <a href="/admin/register" class="nav-link">Register</a>
       </li>
-    </ul>
-    <ul class="navbar-nav fade-in ml-auto">
+      
     
   </nav>
   <!-- /.navbar -->
@@ -83,19 +174,25 @@
 
  
       
-    <div class="user-panel mt-3 pb-3 mb-3 fade-in">
-    <div class="card text-bg-light mb-3 fade-in">
+    <div class="user-panel fade-in">
+    <div class=" text-bg-light mb-3 fade-in">
         <!-- Button Profile -->
-        <button class="btn btn-light btn-block fade-in" type="button" data-toggle="collapse" data-target="#userProfile" aria-expanded="false" aria-controls="userProfile">
-            <i class="fa-solid fa-user-tie"></i> Profile
+        <button class="btn  btn-block fade-in" type="button" data-toggle="collapse" data-target="#userProfile" aria-expanded="false" aria-controls="userProfile">
+        <h2><i class="fa-solid fa-user-tie"></i> Admin</h2>
         </button>
+      
         <!-- Collapsible Content -->
         <div class="collapse fade-in" id="userProfile">
             <div class="card-body fade-in">
-                <p class="card-text fade-in">Logged in as : {{ Auth::guard('admin')->user()->email }}</p>
-           
+                
+           <hr>
                 <div class="modal-body fade-in">
-                <a href="/" class="btn btn-light btn-sm fade-in"><i class="fa-solid fa-right-from-bracket" style="font-size:20px"></i> Logout</a>`  
+                  
+                    <div class="card bg-secondary">
+                <h3>{{ Auth::guard('admin')->user()->username}}</h3>
+                </div>
+                
+                <a href="/" class="btn btn-light btn-sm fade-in mt-2"><i class="fa-solid fa-right-from-bracket" style="font-size:20px"></i> Logout</a>`  
 </div>
            
             </div>
@@ -114,145 +211,158 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> 
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2 fade-in">
-        <ul class="nav nav-pills nav-sidebar flex-column fade-in" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-          <li class="nav-item fade-in">
-            <a href="#" class="nav-link fade-in">
-              <p class="fade-in">
-                Data Jemaat <i class="right fas fa-angle-left fade-in"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview fade-in">
-              <li class="nav-item fade-in">
-                <a href="/admin/datajemaat" class="nav-link fade-in">
-                  <p class="fade-in">Jemaat</p>
-                </a>
-              </li>
-              <li class="nav-item fade-in">
-                <a href="/admin/tambahjemaat" class="nav-link fade-in">
-                  <p class="fade-in"><i class="fa-solid fa-plus"></i> Tambah Jemaat</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item fade-in">
-            <a href="" class="nav-link fade-in">
-              <p class="fade-in">
-                Warta Jemaat <i class="right fas fa-angle-left fade-in"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview fade-in">
-              <li class="nav-item fade-in">
-                <a href="/admin/warta" class="nav-link fade-in">
-                  <p class="fade-in">Warta Jemaat</p>
-                </a>
-              </li>
-              <li class="nav-item fade-in">
-                <a href="/admin/tambahwarta" class="nav-link fade-in">
-                  <p class="fade-in"><i class="fa-solid fa-plus"></i> Tambah Warta Jemaat</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item fade-in">
-            <a href="#" class="nav-link fade-in">
-              <p class="fade-in">
-                Pelayan Ibadah <i class="right fas fa-angle-left fade-in"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview fade-in">
-              <li class="nav-item fade-in">
-                <a href="/admin/pelayan" class="nav-link fade-in">
-                  <p class="fade-in">Pelayan Ibadah</p>
-                </a>
-              </li>
-              <li class="nav-item fade-in">
-                <a href="/admin/tambahpelayan" class="nav-link fade-in">
-                  <p class="fade-in"><i class="fa-solid fa-plus"></i> Tambah Pelayan Ibadah</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item fade-in">
-            <a href="#" class="nav-link fade-in">
-              <p class="fade-in">
-                Keuangan <i class="right fas fa-angle-left fade-in"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview fade-in">
-              <li class="nav-item fade-in">
-                <a href="/admin/payment" class="nav-link fade-in">
-                  <p class="fade-in">Keuangan</p>
-                </a>
-              </li>
-              <li class="nav-item fade-in">
-                <a href="/admin/tambahpayment" class="nav-link fade-in">
-                  <p class="fade-in"><i class="fa-solid fa-plus"></i> Tambah Keuangan</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item fade-in">
-            <a href="#" class="nav-link fade-in">
-              <p class="fade-in">
-                Galeri <i class="right fas fa-angle-left fade-in"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview fade-in">
-              <li class="nav-item fade-in">
-                <a href="/admin/galeri" class="nav-link fade-in">
-                  <p class="fade-in">Galeri</p>
-                </a>
-              </li>
-              <li class="nav-item fade-in">
-                <a href="/admin/tambahgaleri" class="nav-link fade-in">
-                  <p class="fade-in"><i class="fa-solid fa-plus"></i> Tambah Galeri</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item fade-in">
-            <a href="#" class="nav-link fade-in">
-              <p class="fade-in">
-                Berita <i class="right fas fa-angle-left fade-in"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview fade-in">
-              <li class="nav-item fade-in">
-                <a href="/admin/berita" class="nav-link fade-in">
-                  <p class="fade-in">Berita</p>
-                </a>
-              </li>
-              <li class="nav-item fade-in">
-                <a href="/admin/tambahberita" class="nav-link fade-in">
-                  <p class="fade-in"><i class="fa-solid fa-plus"></i> Tambah Berita</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+      <hr>
+        <nav class=" fade-in" >
+
+          <ul class="nav nav-pills nav-sidebar flex-column fade-in" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+            
+            <li class="nav-item fade-in">
+            <a href="#" class="nav-link fade-in" style="text-align: center;">
+      <p class="fade-in">
+          <i class="fa-solid fa-users" style="font-size:30px;color:#ff5151;" ></i>
+          <br>Data Jemaat
+      </p>
+  </a>
+
+              
+              <ul class="nav nav-treeview fade-in">
+                <li class="nav-item fade-in">
+                  <a href="/admin/datajemaat" class="nav-link fade-in">
+                    <p class="fade-in">Jemaat</p><i class="fa-solid fa-eye" style="float:right; color:#a0c434;"></i>
+                  </a>
+                </li>
+                <li class="nav-item fade-in">
+                  <a href="/admin/tambahjemaat" class="nav-link fade-in">
+                    <p class="fade-in">Tambah Jemaat</p><i class="fa-solid fa-plus" style="float:right; color:#a0c434;"></i> 
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <hr>
+            
+            <li class="nav-item fade-in">
+              <a href="" class="nav-link fade-in"  style="text-align: center;">
+                <p class="fade-in">
+                <i class="fa-regular fa-newspaper" style="font-size:30px;color:#ff5151;"></i><br>  
+                Warta Jemaat 
+                  
+                </p>
+              </a>
+              <ul class="nav nav-treeview fade-in">
+                <li class="nav-item fade-in">
+                  <a href="/admin/warta" class="nav-link fade-in">
+                    <p class="fade-in">Warta Jemaat</p><i class="fa-solid fa-eye" style="float:right; color:#a0c434;"></i>
+                  </a>
+                </li>
+                <li class="nav-item fade-in">
+                  <a href="/admin/tambahwarta" class="nav-link fade-in">
+                    <p class="fade-in"></i> Tambah Warta Jemaat</p><i class="fa-solid fa-plus" style="float:right; color:#a0c434;"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <hr>
+            
+          
+            
+            <li class="nav-item fade-in">
+              <a href="#" class="nav-link fade-in" style="text-align: center;">
+                <p class="fade-in">
+                <i class="fa-solid fa-camera-retro"style="font-size:30px;color:#ff5151;"></i><br>  
+                Galeri 
+                </p>
+              </a>
+              <ul class="nav nav-treeview fade-in">
+                <li class="nav-item fade-in">
+                  <a href="/admin/galeri" class="nav-link fade-in">
+                    <p class="fade-in">Galeri</p><i class="fa-solid fa-eye" style="float:right; color:#a0c434;"></i>
+                  </a>
+                </li>
+                <li class="nav-item fade-in">
+                  <a href="/admin/tambahgaleri" class="nav-link fade-in">
+                    <p class="fade-in"> Tambah Galeri</p><i class="fa-solid fa-plus" style="float:right; color:#a0c434;"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <hr>
+            
+            <li class="nav-item fade-in">
+              <a href="#" class="nav-link fade-in" style="text-align: center;">
+                <p class="fade-in">
+                  
+                <i class="fa-solid fa-radio"style="font-size:30px;color:#ff5151;"></i><br>
+                Berita 
+                </p>
+              </a>
+              <ul class="nav nav-treeview fade-in">
+                <li class="nav-item fade-in">
+                  <a href="/admin/berita" class="nav-link fade-in">
+                    <p class="fade-in">Berita</p><i class="fa-solid fa-eye" style="float:right; color:#a0c434;"></i>
+                  </a>
+                </li>
+                <li class="nav-item fade-in">
+                  <a href="/admin/tambahberita" class="nav-link fade-in">
+                    <p class="fade-in"> Tambah Berita</p><i class="fa-solid fa-plus" style="float:right; color:#a0c434;"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <hr>
+            
+            <li class="nav-item fade-in">
+              <a href="#" class="nav-link fade-in" style="text-align: center;">
+                <p class="fade-in">
+                <i class="fa-solid fa-user-group"style="font-size:30px;color:#ff5151;"></i><br> 
+                Pengurus 
+                </p>
+              </a>
+              <ul class="nav nav-treeview fade-in">
+                <li class="nav-item fade-in">
+                  <a href="/admin/pengurus" class="nav-link fade-in">
+                    <p class="fade-in">Pengurus</p><i class="fa-solid fa-eye" style="float:right; color:#a0c434;"></i>
+                  </a>
+                </li>
+                <li class="nav-item fade-in">
+                  <a href="/admin/tambahpengurus" class="nav-link fade-in">
+                    <p class="fade-in"> Tambah Pengurus</p><i class="fa-solid fa-plus" style="float:right; color:#a0c434;"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <hr>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper fade-in">
+  
     <!-- Main content -->
-    <section class="content fade-in">
-      <div class="container fade-in">
+    
+    
+    <div class="container">
         @yield('tambah')
-      </div>
-    </section>
+    </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+    
     <!-- /.content -->
-  </div>
+  
   <!-- /.content-wrapper -->
-  <footer style="background-color: #f2f2f2; padding: 20px; text-align: center; color: #555;">
-   <p style="font-family: Arial, sans-serif; font-size: 14px; margin: 0;">&copy; 2024 by Kelompok 13</p>
+  <footer class="main-footer fixed-bottom">
+  <div class="container text-center">
+    <h4 class="text-light">GKPI Sidikalang Kota</h4>
+    <p class="text-light">&copy; 2024 by Admin of GKPI Sidikalang Kota</p>
+  </div>
 </footer>
 
 
@@ -319,8 +429,18 @@
 <!-- AdminLTE App -->
 <script src="{{URL::asset('asset/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{URL::asset('asset/dist/js/demo.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{URL::asset('asset/dist/js/pages/dashboard.js')}}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+
+@stack('script')
 </body>
 </html>

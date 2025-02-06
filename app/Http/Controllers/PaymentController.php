@@ -38,19 +38,21 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            
-            'persembahan' => 'required',
-            'nominal' => 'required',
+            'file' => 'required|file|mimes:pdf,doc,docx,xls,xlsx',
             'tanggal' => 'required',
-            'status' => 'required',
-            
         ]);
+        
+
+        $file = $request->file('file');
+        $namafile=$file->getClientOriginalName();
+        $tujuanFile= 'asset/file';
+
+        $file->move($tujuanFile,$namafile);
 
         $newPayment = new Payment;
-        $newPayment->persembahan = $request->persembahan;
-        $newPayment->nominal = $request->nominal;
+        $newPayment->file = $namafile;
         $newPayment->tanggal = $request->tanggal;
-        $newPayment->status = $request->status;
+
         
         $newPayment->save();
         
@@ -90,18 +92,14 @@ class PaymentController extends Controller
     public function update(Request $request,$paymentId)
     {
         $request->validate([
-            'persembahan' => 'required',
-            'nominal' => 'required',
+            
             'tanggal' => 'required',
-            'status' => 'required',
             ]);
 
             Payment::where('id', $paymentId)
             ->update([
-            'persembahan' => $request->persembahan,
-            'nominal' => $request->nominal,
-            'tanggal' => $request->tanggal,
-            'status' => $request->status,
+
+            'tanggal' => $request->tanggal,            
             ]);
             return redirect("/admin/payment")->with('status', 'Keuangan dengan id ' .$paymentId. ' berhasil di ubah');
     }

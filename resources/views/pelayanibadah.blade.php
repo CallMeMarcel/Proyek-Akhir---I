@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('all')
-<section class="ftco-intro img" id="events-section" style="background-image: url(asset/images/gallery-3.jpg);">
+<section class="ftco-intro img" id="events-section" style="background-image: url(asset/images/gallery-3.jpg); background-attachment: fixed;">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row">
@@ -22,9 +22,12 @@
                 <table class="table">
                     @foreach ($allPelayan as $pelayan)
                     
-                        <h1 class="text-center">{{$pelayan->formattedCreatedAt}}</h1>
+                       
                     <tbody>
                         <?php $i = 1; ?>
+                        <tr>
+                            <td> <h1 class="text-center">Pelayan Ibadah Pada : {{$pelayan->tanggal}}</h1></td>
+                        </tr>
                         <tr>
                             <td><b><?= $i ?>. Pengkhotbah :</b></td>
                             <td>{{$pelayan->khotbah}}</td>
@@ -63,9 +66,11 @@
                         </tr>
                         <?php $i++; ?>
                         
-                    </tbody>
+                    
                     
                     @endforeach
+                   
+                    </tbody>
                 </table>
             </div>
         </div>

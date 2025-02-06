@@ -36,19 +36,11 @@ class PelayanController extends Controller
      * @param  \App\Http\Requests\StorePelayanRequest  $request
      * @return \Illuminate\Http\Response
      */
-    // $table->id();
-    // $table->string('khotbah');
-    // $table->string('liturgis');
-    // $table->string('warta');
-    // $table->string('persembahan');
-    // $table->string('organis');
-    // $table->string('song');
-    // $table->string('multimedia');
-    // $table->string('doa');
-    // $table->timestamps();
+    
     public function store(Request $request)
     {
         $request->validate([
+            'tanggal'=> 'required',
             'khotbah' => 'required|max:8000',
             'liturgis' => 'required|max:8000',
             'warta' => 'required|max:8000',
@@ -60,6 +52,7 @@ class PelayanController extends Controller
         ]);
 
         $newPelayan = new Pelayan;
+        $newPelayan->tanggal = $request->tanggal;
         $newPelayan->khotbah = $request->khotbah;
         $newPelayan->liturgis = $request->liturgis;
         $newPelayan->warta = $request->warta;
@@ -107,6 +100,7 @@ class PelayanController extends Controller
     public function update(Request $request,$pelayanId)
     {
         $request->validate([
+            'tanggal'=> 'required',
             'khotbah'=> 'required|max:8000',
             'liturgis'=> 'required|max:8000',
             'warta'=> 'required|max:8000',
@@ -119,6 +113,7 @@ class PelayanController extends Controller
 
         Pelayan::where('id', $pelayanId)
         ->update([
+            'tanggal'=> $request->tanggal,
             'khotbah'=> $request->khotbah,
             'liturgis'=> $request->liturgis,
             'warta'=> $request->warta,
@@ -140,10 +135,10 @@ class PelayanController extends Controller
      * @param  \App\Models\Pelayan  $pelayan
      * @return \Illuminate\Http\Response
      */
-    public function destroy($pelayanId)
+    public function destroy($id)
     {
-            Pelayan::where('id', $pelayanId)->delete();
+            Pelayan::where('id', $id)->delete();
 
-            return redirect("/admin/pelayan")->with('status', 'Pelayan dengan id ' .$pelayanId. 'berhasil di hapus');
+            return redirect("/admin/pelayan")->with('status', 'Pelayan dengan id ' .$id. 'berhasil di hapus');
     }
 }

@@ -23,6 +23,13 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="link">link</label>
+                    <input name="link" type="url" class="form-control @error('link') is-invalid @enderror" id="link" value="{{ $berita->link}}">
+                    @error('link')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <label for="deskripsi">Deskripsi </label>
                     <textarea name="deskripsi" type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi">{{$berita->deskripsi}}</textarea>
                     @error('deskripsi')

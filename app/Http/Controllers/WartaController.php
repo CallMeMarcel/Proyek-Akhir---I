@@ -38,17 +38,23 @@ class WartaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul'  => 'required|max:8000',
-            'deskripsi' => 'required',
+            'file' => 'required|file|mimes:pdf,doc,docx,xls,xlsx',
+            'tanggal' => 'required',
         ]);
+        
 
+        $file = $request->file('file');
+        $namafile=$file->getClientOriginalName();
+        $tujuanFile= 'asset/file';
 
+        $file->move($tujuanFile,$namafile);
 
-        $newWarta = new Warta;
-        $newWarta->judul = $request->judul;
-        $newWarta->deskripsi = $request->deskripsi;
+        $newPayment = new Warta;
+        $newPayment->file = $namafile;
+        $newPayment->tanggal = $request->tanggal;
 
-        $newWarta->save();
+        
+        $newPayment->save();
         return  redirect("/admin/warta")->with('status', 'Warta Berhasil ditambahkan');
     }
 
@@ -86,15 +92,14 @@ class WartaController extends Controller
     public function update(Request $request,$wartaId)
     {
         $request->validate([
-            'judul' => 'required | max:8000',
-            'deskripsi' => 'required',
-            ]);
+            'tanggal' => 'required',
+        ]);
 
-            Warta::where('id', $wartaId)
-            ->update([
-            'judul' => $request->judul, 
-            'deskripsi' => $request->deskripsi,
-            ]);
+        Warta::where('id', $wartaId)
+        ->update([
+
+        'tanggal' => $request->tanggal,            
+        ]);
             return redirect("/admin/warta")->with('status', 'Jemaat dengan id ' .$wartaId. ' berhasil di ubah');
     }
 
@@ -104,10 +109,10 @@ class WartaController extends Controller
      * @param  \App\Models\Warta  $warta
      * @return \Illuminate\Http\Response
      */
-    public function destroy($wartaId)
+    public function destroy($id)
     {
-            Warta::where('id', $wartaId)->delete();
+            Warta::where('id', $id)->delete();
 
-            return redirect("/admin/warta")->with('status', 'Warta dengan id : ' .$wartaId. " berhasil dihapus");
+            return redirect("/admin/warta")->with('status', 'Warta dengan id : ' .$id. " berhasil dihapus");
     }
 }

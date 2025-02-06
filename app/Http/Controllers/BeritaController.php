@@ -42,7 +42,8 @@ class BeritaController extends Controller
             'gambar' => 'required|image|mimes:jpeg,png,jpg|max:5000',
             'aktor' => 'required',
             'tanggal' => 'required',
-            'deskripsi' => 'required',
+            'deskripsi' => 'required|max:5000',
+            'link' => 'required',
         ]);
 
         $file = $request->file('gambar');
@@ -57,6 +58,7 @@ class BeritaController extends Controller
         $newBerita->judul = $request->judul;
         $newBerita->aktor = $request->aktor;
         $newBerita->tanggal = $request->tanggal;
+        $newBerita->link = $request->link;
 
         $newBerita->save();
         
@@ -100,6 +102,7 @@ class BeritaController extends Controller
             'judul' => 'required',
             'aktor' => 'required',
             'tanggal' => 'required',
+            'link' => 'required',
 
         ]);
 
@@ -108,7 +111,8 @@ class BeritaController extends Controller
             'deskripsi' => $request->deskripsi,
             'judul' => $request->judul,
             'aktor'=> $request->aktor,
-            'tanggal' => $request->tanggal
+            'tanggal' => $request->tanggal,
+            'link' => $request->link,
         ]);
 
         return redirect("/admin/berita")->with('status', 'Galeri dengan id ' .$beritaId. ' berhasil di ubah');
@@ -120,10 +124,10 @@ class BeritaController extends Controller
      * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function destroy($beritaId)
+    public function destroy($id)
     {
-        Berita::where('id', $beritaId)->delete();
+        Berita::where('id', $id)->delete();
 
-        return redirect("/admin/berita")->with('status', 'Galeri yang ber id '.$beritaId.' Berhasil Dihapus!');
+        return redirect("/admin/berita")->with('status', 'Galeri yang ber id '.$id.' Berhasil Dihapus!');
     }
 }

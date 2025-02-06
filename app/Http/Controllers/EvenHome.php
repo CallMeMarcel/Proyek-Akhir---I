@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -9,7 +8,17 @@ class EvenHome extends Controller
 {
     public function index()
     {
-        $allBerita = Berita::all();
+        
+        $latestBerita = Berita::latest()->take(6)->get();
+
+        
+        if ($latestBerita->count() > 6) {
+            $oldestBerita = Berita::oldest()->first();
+            $oldestBerita->delete();
+        }
+
+        
+        $allBerita = Berita::latest()->take(6)->get();
     
         return view('/home', compact('allBerita'));
     }

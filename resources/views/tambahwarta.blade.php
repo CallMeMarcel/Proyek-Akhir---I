@@ -5,15 +5,15 @@
     <h1>Warta Jemaat</h1>
     <form action="/admin/tambahwarta" method="POST" enctype="multipart/form-data">
       @csrf
-      <div class="mb-3">
-        <label for="judul" class="form-label">Judul</label>
-        <input type="text" class="form-control" id="judul" name="judul" required>
-      </div>
-      <div class="mb-3">
-        <label for="deskripsi" class="form-label">Deskripsi</label>
-        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="5" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-warning"><i class="fa-solid fa-plus"></i></button>
+      <div class="form-group">
+                <label for="file" class="form-label">File :</label>
+                <input type="file" class="form-control-file" id="file" name="file" accept=".pdf,.doc,.docx,.xls,.xlsx" required>
+            </div>
+            <div class="mb-3">
+                <label for="tanggal" class="form-label">Tanggal:</label>
+                <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+            </div>
+      <button type="submit" class="btn btn-warning"><i class="fa-solid fa-plus"></i> Tambah</button>
     </form>
   </div>
 @endsection

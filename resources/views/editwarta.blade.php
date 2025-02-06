@@ -8,16 +8,17 @@
             <form action="{{ url('admin/updatewarta/'.$warta->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="judul">Judul :</label>
-                    <input name="judul" type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" placeholder="Masukkan judul" value="{{ $warta->judul }}">
-                    @error('judul')
+                    <label for="file">file :</label>
+                    <input  name="file" type="file" id="file"  value="{{ $warta->file }}">
+                   
+                    @error('file')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="deskripsi">deskripsi :</label>
-                    <input name="deskripsi" type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" value="{{ $warta->deskripsi }}">
-                    @error('deskripsi')
+                    <label for="tanggal">Tanggal</label>
+                    <input name="tanggal" type="date" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal" value="{{ $warta->tanggal }}">
+                    @error('tanggal')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
